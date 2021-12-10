@@ -8,7 +8,10 @@
   box-sizing: border-box;
   /*border: 1px solid red;*/
 }
-
+h1 {
+  margin: 0;
+  padding: 0;
+}
 @media screen and (max-width: 320px){
   .page {
     max-width: 320px;

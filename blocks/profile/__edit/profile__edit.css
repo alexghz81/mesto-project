@@ -1,0 +1,18 @@
+.profile__edit {
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-area: profile__edit-button;
+  margin-left: 2px;
+  align-self: flex-end;
+}
+
+.profile__edit:hover {
+  opacity: .6;
+  transition: opacity .2s;
+}

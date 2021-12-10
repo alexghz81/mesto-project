@@ -1,3 +1,12 @@
 .profile {
+  /*border: 1px solid blue;*/
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+}
 
+@media screen  and (min-width: 1280px) {
+  .profile {
+    width: 100%;
+  }
 }

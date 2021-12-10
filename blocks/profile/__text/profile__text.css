@@ -1,0 +1,16 @@
+.profile__text {
+  margin-left: 30px;
+  margin-bottom: 4px;
+  /*border: 1px dotted coral;*/
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  grid-template-rows: 39px 18px ;
+  grid-template-areas:
+    "profile__title profile__edit-button"
+    "profile__subtitle profile__subtitle";
+  column-gap: 18px;
+  row-gap: 16px;
+  max-width: 100%;
+  align-items: baseline;
+
+}

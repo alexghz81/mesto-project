@@ -1,4 +1,14 @@
 .content {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  /*border: 1px solid green;*/
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .content {
+    max-width: 880px;
+  }
+
 }

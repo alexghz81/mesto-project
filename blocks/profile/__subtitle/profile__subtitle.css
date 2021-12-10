@@ -1,0 +1,13 @@
+.profile__subtitle {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: normal;
+  /*border: 1px dotted gold;*/
+  box-sizing: border-box;
+  margin-top: 2px;
+  grid-area: profile__subtitle;
+}
