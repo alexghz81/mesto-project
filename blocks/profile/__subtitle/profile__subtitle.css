@@ -8,6 +8,19 @@
   font-weight: normal;
   /*border: 1px dotted gold;*/
   box-sizing: border-box;
-  margin-top: 2px;
   grid-area: profile__subtitle;
+}
+
+@media screen and (max-width: 320px){
+  .profile__subtitle {
+    font-size: 14px;
+    justify-self: center;
+    margin-top: 3px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .profile__subtitle {
+    margin-top: 2px;
+  }
 }

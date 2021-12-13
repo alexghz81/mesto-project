@@ -1,3 +1,18 @@
 .elements_position {
-  margin: 50px auto 0;
+
+}
+
+@media screen and (max-width: 320px) {
+  .elements_position {
+    margin: 0 auto;
+    padding-top: 36px;
+  }
+
+}
+
+@media screen and (min-width: 1280px){
+  .elements_position {
+    margin: 50px auto 0;
+  }
+
 }

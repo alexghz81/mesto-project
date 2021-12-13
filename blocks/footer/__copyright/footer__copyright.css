@@ -1,8 +1,22 @@
 .footer__copyright {
   font-family: Inter, sans-serif;
-  font-size: 18px;
   font-weight: normal;
-  line-height: 22px;
   color: #545454;
-  margin: 15px 0 0 5px;
+}
+
+@media screen and (max-width: 320px) {
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 35px;
+  }
+}
+
+@media screen and (min-width: 1280px){
+  .footer__copyright {
+    margin: 15px 0 0 5px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
 }

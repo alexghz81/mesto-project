@@ -1,7 +1,19 @@
 .footer {
-  max-width: 888px;
-  min-height: 144px;
   display: flex;
   align-items: center;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 320px){
+  .footer {
+    max-width: 282px;
+    min-height: 98px;
+  }
+}
+
+@media screen and (min-width: 1280px){
+  .footer {
+    max-width: 888px;
+    min-height: 144px;
+  }
 }

@@ -6,22 +6,16 @@
   -moz-text-size-adjust: 100%;
   background-color: #000;
   box-sizing: border-box;
-  /*border: 1px solid red;*/
 }
-h1 {
-  margin: 0;
-  padding: 0;
-}
-@media screen and (max-width: 320px){
+
+@media screen and (max-width: 320px) {
   .page {
     max-width: 320px;
   }
-
 }
 
 @media screen and (min-width: 1280px) {
   .page {
     max-width: 1280px;
   }
-
 }
