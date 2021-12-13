@@ -4,12 +4,12 @@
 
 @media screen and (max-width: 320px){
   .header_position {
-    padding-top: 28px ;
+    margin-top: 28px ;
   }
 }
 
 @media screen and (min-width: 1280px){
   .header_position {
-    padding-top: 45px;
+    margin-top: 45px;
   }
 }

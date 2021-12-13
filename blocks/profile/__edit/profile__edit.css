@@ -9,6 +9,7 @@
   justify-content: center;
   grid-area: profile__edit-button;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .profile__edit:hover {
@@ -16,7 +17,7 @@
   transition: opacity .2s;
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 320px) {
   .profile__edit {
     width: 18px;
     height: 18px;
@@ -24,9 +25,8 @@
   }
 }
 
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1280px) {
   .profile__edit {
     margin-left: 2px;
   }
-
 }
