@@ -14,7 +14,7 @@
   transition: opacity .2s;
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 320px) {
   .form__button {
     margin-top: 22px;
     width: 238px;

@@ -1,6 +1,4 @@
 .profile__edit {
-  width: 24px;
-  height: 24px;
   box-sizing: border-box;
   border: 1px solid #fff;
   display: flex;
@@ -17,7 +15,7 @@
   transition: opacity .2s;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 1279px) {
   .profile__edit {
     width: 18px;
     height: 18px;
@@ -27,6 +25,8 @@
 
 @media screen and (min-width: 1280px) {
   .profile__edit {
+    width: 24px;
+    height: 24px;
     margin-left: 2px;
   }
 }

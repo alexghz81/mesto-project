@@ -4,9 +4,8 @@
   max-height: 120px;
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 320px) {
   .profile__image {
     margin: 2px 0 0 2px;
   }
-
 }
