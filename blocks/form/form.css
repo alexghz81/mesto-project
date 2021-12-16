@@ -6,13 +6,13 @@
   align-items: center;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 887px) {
   .form {
     margin-top: 66px;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 888px) {
   .form {
     margin-top: 40px;
   }

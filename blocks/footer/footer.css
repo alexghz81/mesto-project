@@ -2,24 +2,26 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-  min-height: 98px;
+  min-height: 144px;
+  align-self: flex-end;
 }
 
 @media screen and (max-width: 320px) {
   .footer {
-    max-width: 282px;
+    min-width: 282px;
+    min-height: 98px;
   }
 }
 
 @media screen and (min-width: 321px) and (max-width: 1279px) {
   .footer {
-    margin-left: 10%;
+    margin-left: 5%;
+    min-width: 100%;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .footer {
-    max-width: 888px;
-    min-height: 144px;
+    min-width: 880px;
   }
 }

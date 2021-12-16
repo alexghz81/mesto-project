@@ -3,6 +3,9 @@
   flex-direction: column;
   box-sizing: border-box;
   margin: 0 auto;
+  min-height: 100%;
+  flex-grow: 1;
+  min-width: 100%;
 }
 
 @media screen and (min-width: 881px) {

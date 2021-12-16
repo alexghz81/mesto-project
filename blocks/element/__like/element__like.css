@@ -3,6 +3,7 @@
   width: 22px;
   background: url("../../../images/like.svg") no-repeat center;
   cursor: pointer;
+  border: none;
 }
 
 .element__like:hover {
