@@ -81,7 +81,7 @@
 <footer class="footer">
   <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 </footer>
-<section class="popup">
+<section class="popup" id="profileEdit">
   <div class="popup__container">
     <button class="popup__close-btn" type="button"></button>
     <h2 class="popup__title">
@@ -94,5 +94,19 @@
     </form>
   </div>
 </section>
+<section class="popup" id="addMesto">
+  <div class="popup__container">
+    <button class="popup__close-btn" type="button"></button>
+    <h2 class="popup__title">
+      Новое место
+    </h2>
+    <form name="profile-edit-form" class="form">
+      <input type="text" name="mesto__title" class="form__input" value="Название">
+      <input type="text" name="mesto__href" class="form__input" value="Ссылка на картинку">
+      <button type="submit" name="form__submit" class="form__button">Создать</button>
+    </form>
+  </div>
+</section>
+<script src="./script/index.js"></script>
 </body>
 </html>

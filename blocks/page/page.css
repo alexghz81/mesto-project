@@ -13,11 +13,13 @@
 @media screen and (max-width: 320px) {
   .page {
     max-width: 320px;
+    min-height: 100vh;
   }
 }
 
 @media screen and (min-width: 881px) {
   .page {
     max-width: 880px;
+    min-height: 100vh;
   }
 }
