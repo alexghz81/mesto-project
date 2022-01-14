@@ -7,5 +7,5 @@
   opacity: 0;
   visibility: hidden;
   background-color: rgba(0, 0, 0, .5);
-  transition: visibility 0s, opacity .3s linear;
+  transition: visibility .3s, opacity .3s linear;
 }
