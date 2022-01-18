@@ -1,0 +1,7 @@
+.popup__image-scale {
+  position: relative;
+  background: none;
+  border-radius: 0;
+  max-width: 75vw;
+  max-height: 75vh;
+}

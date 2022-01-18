@@ -1,49 +1,58 @@
+//Popup
+const popupCloseBtn = document.querySelectorAll('.popup__close-btn');
+
+//Profile popup
 const profileEditPopup = document.querySelector('#profileEdit');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const popupCloseBtn = document.querySelectorAll('.popup__close-btn');
 const profileEditBtn = document.querySelector('.profile__edit');
 const profileEditForm = document.forms['profile-edit-form'];
 const profileTitleInput = profileEditForm.elements.profile__title;
 const profileSubtitleInput = profileEditForm.elements.profile__subtitle;
+
+//Mesto popup
 const addMestoPopup = document.querySelector('#addMesto');
 const addMestoBtn = document.querySelector('.profile__add-button');
+const addMestoForm = document.forms['add-mesto-form'];
+const addMestoTitle = addMestoForm.elements.mesto__title;
+const addMestoLink = addMestoForm.elements.mesto__href;
 
+//Cards template
+const cardTemplate = document.querySelector('#card').content;
+const cards = document.querySelector('.elements');
 
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+const addCardItem = (data) => {
+    const cardsElement = cardTemplate.querySelector('.element').cloneNode(true);
+    const cardImage = cardsElement.querySelector('.element__image');
+    const cardTitle = cardsElement.querySelector('.element__title');
+    cardImage.src = data.link;
+    cardImage.alt = data.name;
+    cardTitle.textContent = data.name;
+    cardsElement.querySelector('.element__like').addEventListener('click', clickLike);
+    cardsElement.querySelector('.element__delete').addEventListener('click', deleteElement);
+    cardImage.addEventListener('click', () => imagePopupHandler(data));
+    cards.prepend(cardsElement);
+}
 
+for (let i = 0; i < initialCards.length; i++) {
+    addCardItem(initialCards[i]);
+}
 
-function openPopup (popup){
+imagePopupHandler = (data) => {
+    console.log(data.name);
+    console.log(data.link);
+    const imageScale = document.querySelector('#image-popup');
+    imageScale.querySelector('.popup__image').src = data.link;
+    imageScale.querySelector('.popup__image-title').textContent = data.name;
+    openPopup(imageScale);
+}
+
+function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
 function closePopup() {
-    const popupActive = document.querySelector('.popup.popup_opened');
+    const popupActive = document.querySelector('.popup_opened');
     popupActive.classList.remove('popup_opened');
 }
 
@@ -54,7 +63,28 @@ function submitProfileEdit(evt) {
     closePopup();
 }
 
-profileEditBtn.addEventListener('click', () => {openPopup(profileEditPopup)});
+function clickLike(evt) {
+    evt.target.classList.toggle('element__like_active');
+}
+
+function deleteElement(evt) {
+    const item = evt.target.closest('.element');
+    item.remove();
+}
+
+profileEditBtn.addEventListener('click', () => {
+    openPopup(profileEditPopup);
+});
 profileEditForm.addEventListener('submit', submitProfileEdit);
-addMestoBtn.addEventListener('click', () => {openPopup(addMestoPopup)});
+addMestoBtn.addEventListener('click', () => {
+    openPopup(addMestoPopup);
+});
+addMestoForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const data = {};
+    data.name = addMestoTitle.value;
+    data.link = addMestoLink.value;
+    addCardItem(data);
+    closePopup();
+});
 popupCloseBtn.forEach(item => item.addEventListener('click', closePopup));

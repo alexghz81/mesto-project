@@ -22,66 +22,12 @@
     <button type="button" class="profile__add-button"></button>
   </section>
   <ul class="elements elements_position">
-    <li class="element">
-      <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото Карачаевск" class="element__image">
-      <div class="element__bottom">
-        <h2 class="element__title">
-          Карачаевск
-        </h2>
-        <button type="button" class="element__like element__like_active"></button>
-      </div>
-    </li>
-    <li class="element">
-      <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Фото Карачаевск" class="element__image">
-      <div class="element__bottom">
-        <h2 class="element__title">
-          Гора Эльбрус
-        </h2>
-        <button type="button" class="element__like"></button>
-      </div>
-    </li>
-    <li class="element">
-      <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Фото Карачаевск" class="element__image">
-      <div class="element__bottom">
-        <h2 class="element__title">
-          Домбай
-        </h2>
-        <button type="button" class="element__like"></button>
-      </div>
-    </li>
-    <li class="element">
-      <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Фото Карачаевск" class="element__image">
-      <div class="element__bottom">
-        <h2 class="element__title">
-          Гора Эльбрус
-        </h2>
-        <button type="button" class="element__like"></button>
-      </div>
-    </li>
-    <li class="element">
-      <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Фото Карачаевск" class="element__image">
-      <div class="element__bottom">
-        <h2 class="element__title">
-          Домбай
-        </h2>
-        <button type="button" class="element__like"></button>
-      </div>
-    </li>
-    <li class="element">
-      <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото Карачаевск" class="element__image">
-      <div class="element__bottom">
-        <h2 class="element__title">
-          Карачаево-Черкессия
-        </h2>
-        <button type="button" class="element__like"></button>
-      </div>
-    </li>
   </ul>
 </main>
 <footer class="footer">
   <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 </footer>
-<section class="popup" id="profileEdit">
+<section class="popup popup_overlay_light" id="profileEdit">
   <div class="popup__container">
     <button class="popup__close-btn" type="button"></button>
     <h2 class="popup__title">
@@ -94,19 +40,39 @@
     </form>
   </div>
 </section>
-<section class="popup" id="addMesto">
+<section class="popup popup_overlay_light" id="addMesto">
   <div class="popup__container">
     <button class="popup__close-btn" type="button"></button>
     <h2 class="popup__title">
       Новое место
     </h2>
-    <form name="profile-edit-form" class="form">
-      <input type="text" name="mesto__title" class="form__input" value="Название">
-      <input type="text" name="mesto__href" class="form__input" value="Ссылка на картинку">
+    <form name="add-mesto-form" class="form">
+      <input type="text" name="mesto__title" class="form__input" placeholder="Название">
+      <input type="text" name="mesto__href" class="form__input" placeholder="Ссылка на картинку">
       <button type="submit" name="form__submit" class="form__button">Создать</button>
     </form>
   </div>
 </section>
+<section class="popup popup_overlay_dark" id="image-popup">
+  <div class="popup__container popup__image-scale">
+    <button class="popup__close-btn" type="button"></button>
+    <img src="#" class="popup__image" alt="">
+    <h2 class="popup__image-title">Заголовок изображения
+    </h2>
+  </div>
+</section>
+<template id="card">
+  <li class="element">
+    <img src='' alt="Фото Карачаевск" class="element__image">
+    <div class="element__delete"></div>
+    <div class="element__bottom">
+      <h2 class="element__title">
+      </h2>
+      <button type="button" class="element__like"></button>
+    </div>
+  </li>
+</template>
+<script src="./script/constants.js"></script>
 <script src="./script/index.js"></script>
 </body>
 </html>
