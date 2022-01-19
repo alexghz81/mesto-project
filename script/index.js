@@ -19,7 +19,7 @@ const addMestoLink = addMestoForm.elements.mesto__href;
 
 //Cards template
 const cardTemplate = document.querySelector('#card').content;
-const cards = document.querySelector('.elements');
+const card = document.querySelector('.elements');
 
 const addCardItem = (data) => {
     const cardsElement = cardTemplate.querySelector('.element').cloneNode(true);
@@ -31,7 +31,7 @@ const addCardItem = (data) => {
     cardsElement.querySelector('.element__like').addEventListener('click', clickLike);
     cardsElement.querySelector('.element__delete').addEventListener('click', deleteElement);
     cardImage.addEventListener('click', () => imagePopupHandler(data));
-    cards.prepend(cardsElement);
+    card.prepend(cardsElement);
 }
 
 for (let i = 0; i < initialCards.length; i++) {
@@ -39,8 +39,6 @@ for (let i = 0; i < initialCards.length; i++) {
 }
 
 imagePopupHandler = (data) => {
-    console.log(data.name);
-    console.log(data.link);
     const imageScale = document.querySelector('#image-popup');
     imageScale.querySelector('.popup__image').src = data.link;
     imageScale.querySelector('.popup__image-title').textContent = data.name;
