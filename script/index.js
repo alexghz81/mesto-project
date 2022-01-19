@@ -1,5 +1,5 @@
 //Popup
-const popupCloseBtn = document.querySelectorAll('.popup__close-btn');
+const popupCloseButtons = document.querySelectorAll('.popup__close-btn');
 
 //Profile popup
 const profileEditPopup = document.querySelector('#profileEdit');
@@ -21,7 +21,10 @@ const addMestoLink = addMestoForm.elements.mesto__href;
 const cardTemplate = document.querySelector('#card').content;
 const card = document.querySelector('.elements');
 
-const addCardItem = (data) => {
+//Image Scale popup
+const imageScale = document.querySelector('#image-popup');
+
+function createCard(data) {
     const cardsElement = cardTemplate.querySelector('.element').cloneNode(true);
     const cardImage = cardsElement.querySelector('.element__image');
     const cardTitle = cardsElement.querySelector('.element__title');
@@ -31,6 +34,11 @@ const addCardItem = (data) => {
     cardsElement.querySelector('.element__like').addEventListener('click', clickLike);
     cardsElement.querySelector('.element__delete').addEventListener('click', deleteElement);
     cardImage.addEventListener('click', () => imagePopupHandler(data));
+    return cardsElement;
+}
+
+const addCardItem = (data) => {
+    const cardsElement = createCard(data)
     card.prepend(cardsElement);
 }
 
@@ -39,8 +47,8 @@ for (let i = 0; i < initialCards.length; i++) {
 }
 
 imagePopupHandler = (data) => {
-    const imageScale = document.querySelector('#image-popup');
     imageScale.querySelector('.popup__image').src = data.link;
+    imageScale.querySelector('.popup__image').alt = data.name;
     imageScale.querySelector('.popup__image-title').textContent = data.name;
     openPopup(imageScale);
 }
@@ -51,7 +59,9 @@ function openPopup(popup) {
 
 function closePopup() {
     const popupActive = document.querySelector('.popup_opened');
-    popupActive.classList.remove('popup_opened');
+    if (popupActive) {
+        popupActive.classList.remove('popup_opened');
+    }
 }
 
 function submitProfileEdit(evt) {
@@ -84,5 +94,7 @@ addMestoForm.addEventListener('submit', (evt) => {
     data.link = addMestoLink.value;
     addCardItem(data);
     closePopup();
+    addMestoTitle.value = '';
+    addMestoLink.value = '';
 });
-popupCloseBtn.forEach(item => item.addEventListener('click', closePopup));
+popupCloseButtons.forEach(item => item.addEventListener('click', closePopup));
