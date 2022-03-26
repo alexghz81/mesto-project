@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Mesto-project</title>
-  <link rel="stylesheet" href="./pages/index.css">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body class="page page_position">
 <header class="header header_position">
-  <img src="./images/logo.svg" alt="Логотип Проекта Место" class="header__logo">
+  <img src="<%=require('./images/logo.svg')%>" alt="Логотип Проекта Место" class="header__logo">
 </header>
 <main class="content">
   <section class="profile profile_position">
-    <img src="./images/avatar.jpg" alt="Изображение профиля" class="profile__image">
+    <img src="<%=require('./images/avatar.jpg')%>" alt="Изображение профиля" class="profile__image">
     <div class="profile__text">
       <h1 class="profile__title">Жак-Ив Кусто</h1>
       <button type="button" class="profile__edit"></button>
@@ -34,8 +33,28 @@
       Редактировать профиль
     </h2>
     <form name="profile-edit-form" class="form">
-      <input type="text" name="profile__title" class="form__input" value="Жак-Ив Кусто">
-      <input type="text" name="profile__subtitle" class="form__input" value="Исследователь океана">
+      <input
+        type="text"
+        name="profile__title"
+        class="form__input"
+        value="Жак-Ив Кусто"
+        required
+        minlength="2"
+        maxlength="40"
+        id="profile-name"
+      >
+      <span id="profile-name-error" class="form__error"></span>
+      <input
+        type="text"
+        name="profile__subtitle"
+        class="form__input"
+        value="Исследователь океана"
+        required
+        minlength="2"
+        maxlength="200"
+        id="profile-text"
+      >
+      <span id="profile-text-error" class="form__error"></span>
       <button type="submit" name="form__submit" class="form__button">Сохранить</button>
     </form>
   </div>
@@ -47,9 +66,27 @@
       Новое место
     </h2>
     <form name="add-mesto-form" class="form">
-      <input type="text" name="mesto__title" class="form__input" placeholder="Название">
-      <input type="text" name="mesto__href" class="form__input" placeholder="Ссылка на картинку">
-      <button type="submit" name="form__submit" class="form__button">Создать</button>
+      <input
+        type="text"
+        name="mesto__title"
+        class="form__input"
+        placeholder="Название"
+        id="mesto-title"
+        required
+        minlength="2"
+        maxlength="30"
+      >
+      <span id="mesto-title-error" class="form__error"></span>
+      <input
+        type="url"
+        name="mesto__href"
+        class="form__input"
+        placeholder="Ссылка на картинку"
+        id="mesto-href"
+        required
+      >
+      <span id="mesto-href-error" class="form__error"></span>
+      <button type="submit" name="form__submit" class="form__button form__button_disabled">Создать</button>
     </form>
   </div>
 </section>
@@ -72,7 +109,5 @@
     </div>
   </li>
 </template>
-<script src="./script/constants.js"></script>
-<script src="./script/index.js"></script>
 </body>
 </html>
