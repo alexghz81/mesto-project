@@ -3,13 +3,13 @@ import {profileSubtitle, profileTitle, profileEditForm} from "./constants";
 const profileTitleInput = profileEditForm.elements.profile__title;
 const profileSubtitleInput = profileEditForm.elements.profile__subtitle;
 
-function isEsc(evt) {
+function handleEsc(evt) {
   if (evt.key.toLowerCase() === 'escape') {
     closePopup();
   }
 }
 
-function closeOverlay(evt) {
+function handleOverlay(evt) {
   if (evt.target.classList.contains('popup')) {
     closePopup();
   }
@@ -17,8 +17,8 @@ function closeOverlay(evt) {
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', isEsc, {once: true})
-  document.addEventListener('click', closeOverlay);
+  document.addEventListener('keydown', handleEsc)
+  document.addEventListener('click', handleOverlay);
 }
 
 export function closePopup() {
@@ -26,8 +26,8 @@ export function closePopup() {
   if (popupActive) {
     popupActive.classList.remove('popup_opened');
   }
-  document.removeEventListener('click', closeOverlay);
-  document.removeEventListener('keydown', isEsc);
+  document.removeEventListener('click', handleOverlay);
+  document.removeEventListener('keydown', handleEsc);
 
 }
 

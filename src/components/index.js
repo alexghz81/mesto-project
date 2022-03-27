@@ -31,10 +31,10 @@ addMestoForm.addEventListener('submit', (evt) => {
   data.link = addMestoLink.value;
   addCardItem(data);
   closePopup();
-  addMestoTitle.value = '';
-  addMestoLink.value = '';
-  const submitButton = evt.target.querySelector('.form__button');
+  evt.target.reset();
+  const submitButton = evt.submitter;
   submitButton.classList.add(validationParameters.inactiveButtonClass);
+  submitButton.disabled = true;
 });
 
 popupCloseButtons.forEach(item => item.addEventListener('click', closePopup));

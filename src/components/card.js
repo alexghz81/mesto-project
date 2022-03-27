@@ -1,10 +1,12 @@
-import {card, cardTemplate, imageScale, initialCards} from "./constants";
+import {card, cardTemplate, imageScale, initialCards, popupImage, popupImageTitle} from "./constants";
 import {openPopup} from "./modal";
 
-const imagePopupHandler = (data) => {
-  imageScale.querySelector('.popup__image').src = data.link;
-  imageScale.querySelector('.popup__image').alt = data.name;
-  imageScale.querySelector('.popup__image-title').textContent = data.name;
+
+
+const openImagePopup = (data) => {
+  popupImage.src = data.link;
+  popupImage.alt = data.name;
+  popupImageTitle.textContent = data.name;
   openPopup(imageScale);
 }
 
@@ -17,7 +19,7 @@ function createCard(data) {
   cardTitle.textContent = data.name;
   cardsElement.querySelector('.element__like').addEventListener('click', clickLike);
   cardsElement.querySelector('.element__delete').addEventListener('click', deleteElement);
-  cardImage.addEventListener('click', () => imagePopupHandler(data));
+  cardImage.addEventListener('click', () => openImagePopup(data));
   return cardsElement;
 }
 
@@ -26,9 +28,10 @@ export const addCardItem = (data) => {
   card.prepend(cardsElement);
 }
 
-for (let i = 0; i < initialCards.length; i++) {
-  addCardItem(initialCards[i]);
-}
+initialCards.forEach(element => {
+  addCardItem(element);
+});
+
 
 function clickLike(evt) {
   evt.target.classList.toggle('element__like_active');

@@ -46,5 +46,7 @@ export const addMestoForm = document.forms['add-mesto-form'];
 export const addMestoTitle = addMestoForm.elements.mesto__title;
 export const addMestoLink = addMestoForm.elements.mesto__href;
 export const imageScale = document.querySelector('#image-popup');
+export const popupImage = imageScale.querySelector('.popup__image');
+export const popupImageTitle = imageScale.querySelector('.popup__image-title');
 export const cardTemplate = document.querySelector('#card').content;
 export const card = document.querySelector('.elements');
