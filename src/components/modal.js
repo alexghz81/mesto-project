@@ -1,10 +1,8 @@
-import {profileSubtitle, profileTitle, profileEditForm} from "./constants";
-
-const profileTitleInput = profileEditForm.elements.profile__title;
-const profileSubtitleInput = profileEditForm.elements.profile__subtitle;
+import {profileSubtitle, profileTitle, profileTitleInput, profileSubtitleInput} from "./constants";
+import {updateProfile} from "./api";
 
 function handleEsc(evt) {
-  if (evt.key.toLowerCase() === 'escape') {
+  if (evt.key === 'Escape') {
     closePopup();
   }
 }
@@ -28,13 +26,20 @@ export function closePopup() {
   }
   document.removeEventListener('click', handleOverlay);
   document.removeEventListener('keydown', handleEsc);
-
 }
 
 export function submitProfileEdit(evt) {
   evt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileSubtitle.textContent = profileSubtitleInput.value;
+  const profileData = {
+    name: profileTitleInput.value,
+    about: profileSubtitleInput.value
+  };
+  updateProfile(profileData)
+    .then(() => {
+      profileTitle.textContent = profileData.name;
+      profileSubtitle.textContent = profileData.about;
+    })
+    .catch(err => console.log(err));
   closePopup();
 }
 

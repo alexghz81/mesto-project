@@ -1,4 +1,5 @@
 .element__bottom {
   display: flex;
-  margin-top: 25px;
+  margin-top: 22px;
+  justify-content: space-between;
 }

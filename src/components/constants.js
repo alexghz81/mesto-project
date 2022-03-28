@@ -1,29 +1,14 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+export const apiConfig = {
+  url: "https://mesto.nomoreparties.co/v1/plus-cohort-8/",
+  headers: {
+    "Content-type": "application/json",
+    "authorization": "5e31384e-8340-4b11-9222-b8b7f169fb3e"
   },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+}
+
+export const user = {
+  id: ''
+}
 
 export const validationParameters = {
   formSelector: '.form',
@@ -50,3 +35,6 @@ export const popupImage = imageScale.querySelector('.popup__image');
 export const popupImageTitle = imageScale.querySelector('.popup__image-title');
 export const cardTemplate = document.querySelector('#card').content;
 export const card = document.querySelector('.elements');
+export const avatar = document.querySelector('.profile__image');
+export const profileTitleInput = profileEditForm.elements.profile__title;
+export const profileSubtitleInput = profileEditForm.elements.profile__subtitle;
