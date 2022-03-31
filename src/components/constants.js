@@ -38,4 +38,8 @@ export const card = document.querySelector('.elements');
 export const avatar = document.querySelector('.profile__image');
 export const profileTitleInput = profileEditForm.elements.profile__title;
 export const profileSubtitleInput = profileEditForm.elements.profile__subtitle;
+export const profileAvatar = document.querySelector('.profile__image');
+export const editAvatarPopup = document.querySelector('#avatarEdit');
+export const updateAvatarForm = document.forms['avatar-edit-form']
+export const updateAvatarLink = updateAvatarForm.elements.avatar__href;
 

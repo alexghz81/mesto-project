@@ -8,13 +8,13 @@
 @media screen and (max-width: 887px) {
   .popup__container {
     min-height: 322px;
-    min-width: 282px;
+    max-width: 282px;
   }
 }
 
 @media screen and (min-width: 888px) {
   .popup__container {
-    min-height: 330px;
+    min-height: fit-content;
     min-width: 430px;
   }
 }

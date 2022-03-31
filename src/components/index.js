@@ -9,21 +9,38 @@ import {
   addMestoForm,
   addMestoTitle,
   addMestoLink,
-  profileEditForm, profileTitle, profileSubtitle, avatar, profileTitleInput, profileSubtitleInput, user
+  profileEditForm,
+  profileTitle,
+  profileSubtitle,
+  avatar,
+  profileTitleInput,
+  profileSubtitleInput,
+  user,
+  profileAvatar,
+  editAvatarPopup, updateAvatarForm, updateAvatarLink,
 } from './constants';
 import {enableValidation} from './validate';
 import {openPopup, closePopup, submitProfileEdit} from './modal';
 import {addCardItem} from "./card";
-import {addCard, getCards, getUserInfo} from "./api";
+import {addCard, getCards, getUserInfo, updateAvatar} from "./api";
 
 profileEditBtn.addEventListener('click', () => {
   openPopup(profileEditPopup);
 });
 profileEditForm.addEventListener('submit', submitProfileEdit);
 
-addMestoBtn.addEventListener('click', () => {
-  openPopup(addMestoPopup);
-});
+addMestoBtn.addEventListener('click', () => openPopup(addMestoPopup));
+profileAvatar.addEventListener('click', () => openPopup(editAvatarPopup));
+
+updateAvatarForm.addEventListener('submit', evt =>{
+  evt.preventDefault();
+  const data ={};
+  data.avatar = updateAvatarLink.value;
+  updateAvatar(data)
+    .then(res => profileAvatar.src = res.avatar)
+    .then(closePopup())
+    .catch(err => console.log(err));
+})
 
 addMestoForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -33,7 +50,6 @@ addMestoForm.addEventListener('submit', (evt) => {
   addCard(data)
     .then((data) => {
       addCardItem(data);
-      console.log('item added');
       closePopup();
       evt.target.reset();
       const submitButton = evt.submitter;
@@ -45,6 +61,7 @@ addMestoForm.addEventListener('submit', (evt) => {
 
 popupCloseButtons.forEach(item => item.addEventListener('click', closePopup));
 
+
 enableValidation(validationParameters);
 
 getUserInfo()
@@ -55,6 +72,7 @@ getUserInfo()
     profileTitleInput.value = res.name;
     profileSubtitleInput.value = res.about;
     user.id = res._id.toString();
+    updateAvatarLink.value = res.avatar;
   })
   .catch(err => console.log(err));
 

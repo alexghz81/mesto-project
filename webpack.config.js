@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   resolve: {
     fallback: {
-      "url": false,
+     // "url": require.resolve("url/"),
       "fs": false,
       "tls": false,
       "net": false,
@@ -16,6 +16,8 @@ module.exports = {
       "https": false,
       "stream": false,
       "crypto": false,
+      //"assert": require.resolve("assert/"),
+      //"util": require.resolve("util/")
     }
   },
   entry: {main: './src/components/index.js'},
@@ -57,6 +59,6 @@ module.exports = {
       template: './src/index.html' // путь к файлу index.html
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
   ]
 }

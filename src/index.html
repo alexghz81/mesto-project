@@ -12,7 +12,10 @@
 </header>
 <main class="content">
   <section class="profile profile_position">
-    <img src="<%=require('./images/avatar.jpg')%>" alt="Изображение профиля" class="profile__image">
+    <div class="profile__image-overlay">
+      <img src="#" alt="Изображение профиля"
+           class="profile__image">
+    </div>
     <div class="profile__text">
       <h1 class="profile__title"></h1>
       <button type="button" class="profile__edit"></button>
@@ -56,6 +59,26 @@
       >
       <span id="profile-text-error" class="form__error"></span>
       <button type="submit" name="form__submit" class="form__button">Сохранить</button>
+    </form>
+  </div>
+</section>
+<section class="popup popup_overlay_light" id="avatarEdit">
+  <div class="popup__container">
+    <button class="popup__close-btn" type="button"></button>
+    <h2 class="popup__title">
+      Обновить аватар
+    </h2>
+    <form name="avatar-edit-form" class="form">
+      <input
+        type="url"
+        name="avatar__href"
+        class="form__input"
+        placeholder="Ссылка на картинку"
+        id="avatar-href"
+        required
+      >
+      <span id="avatar-href-error" class="form__error"></span>
+      <button type="submit" name="form__submit" class="form__button" disabled>Сохранить</button>
     </form>
   </div>
 </section>

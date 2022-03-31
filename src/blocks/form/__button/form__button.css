@@ -7,6 +7,7 @@
   text-align: center;
   border-radius: 2px;
   cursor: pointer;
+  margin-bottom: 36px;
 }
 
 .form__button:hover {

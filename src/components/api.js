@@ -27,6 +27,17 @@ export function updateProfile(profileData) {
     .catch(err => console.log(err))
 }
 
+export function updateAvatar(avatarLink) {
+  return fetch(`${apiConfig.url}users/me/avatar`, {
+      method: 'PATCH',
+      headers: apiConfig.headers,
+      body: JSON.stringify(avatarLink)
+    }
+  )
+    .then(onResponce)
+    .catch(err => console.log(err))
+}
+
 export function addCard(cardData) {
   return fetch(`${apiConfig.url}cards`, {
     method: 'POST',

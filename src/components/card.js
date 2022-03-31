@@ -56,18 +56,19 @@ function clickLike(evt, data) {
       if (isLiked(data._id, likeList)) {
         deleteLike(data)
           .then(res => {
-            evt.target.classList.remove('element__like_active');
             evt.target.parentNode.querySelector('.element__like-number').textContent = res.likes.length;
+            evt.target.classList.remove('element__like_active');
           })
           .catch(err => console.log(err));
       } else {
         addLike(data)
           .then(res => {
-            evt.target.classList.add('element__like_active');
             evt.target.parentNode.querySelector('.element__like-number').textContent = res.likes.length;
+            evt.target.classList.add('element__like_active');
           })
           .catch(err => console.log(err));
       }
+
     })
 }
 
