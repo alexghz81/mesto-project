@@ -14,7 +14,7 @@ import {
 import {enableValidation} from './validate';
 import {openPopup, closePopup, submitProfileEdit} from './modal';
 import {addCardItem} from "./card";
-import {addCard, getUserInfo} from "./api";
+import {addCard, getCards, getUserInfo} from "./api";
 
 profileEditBtn.addEventListener('click', () => {
   openPopup(profileEditPopup);
@@ -57,5 +57,20 @@ getUserInfo()
     user.id = res._id.toString();
   })
   .catch(err => console.log(err));
+
+export let cardsList =[];
+
+Promise.all([getCards()])
+  .then( res => {
+    cardsList = res[0];
+    return cardsList;
+  }).then(cardsList => {
+    cardsList.forEach(element => {
+    addCardItem(element, cardsList);
+    return cardsList;
+    })})
+  .catch(err => console.log(err));
+
+
 
 

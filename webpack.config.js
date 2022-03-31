@@ -4,6 +4,20 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  resolve: {
+    fallback: {
+      "url": false,
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "path": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "stream": false,
+      "crypto": false,
+    }
+  },
   entry: {main: './src/components/index.js'},
   output: {
     path: path.resolve(__dirname, 'dist'),

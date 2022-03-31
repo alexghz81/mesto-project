@@ -27,7 +27,7 @@ export function updateProfile(profileData) {
     .catch(err => console.log(err))
 }
 
-export function addCard (cardData) {
+export function addCard(cardData) {
   return fetch(`${apiConfig.url}cards`, {
     method: 'POST',
     headers: apiConfig.headers,
@@ -37,12 +37,29 @@ export function addCard (cardData) {
     .catch(err => console.log(err))
 }
 
-export function deleteCard (data) {
-  console.log(data)
+export function deleteCard(data) {
   return fetch(`${apiConfig.url}cards/${data._id}`, {
     method: 'DELETE',
     headers: apiConfig.headers
   })
     .then(onResponce)
-    .catch(err=> console.log(err))
+    .catch(err => console.log(err))
+}
+
+export function addLike(data) {
+  return fetch(`${apiConfig.url}cards/likes/${data._id}`, {
+    method: 'PUT',
+    headers: apiConfig.headers
+  })
+    .then(onResponce)
+    .catch(err => console.log(err))
+}
+
+export function deleteLike(data) {
+  return fetch(`${apiConfig.url}cards/likes/${data._id}`, {
+    method: 'DELETE',
+    headers: apiConfig.headers
+  })
+    .then(onResponce)
+    .catch(err => console.log(err));
 }
