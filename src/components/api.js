@@ -1,7 +1,7 @@
 import {apiConfig} from "./constants";
 
 export const onResponce = (res) => {
-  return res.ok ? res.json() : Promise.reject(res);
+  return res.ok ? res.json() : Promise.reject('Ошибка : ' + res);
 }
 
 export function getUserInfo() {

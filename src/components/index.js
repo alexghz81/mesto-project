@@ -17,7 +17,7 @@ import {
   profileSubtitleInput,
   user,
   profileAvatar,
-  editAvatarPopup, updateAvatarForm, updateAvatarLink,
+  editAvatarPopup, updateAvatarForm, updateAvatarLink
 } from './constants';
 import {enableValidation} from './validate';
 import {openPopup, closePopup, submitProfileEdit} from './modal';
@@ -32,18 +32,23 @@ profileEditForm.addEventListener('submit', submitProfileEdit);
 addMestoBtn.addEventListener('click', () => openPopup(addMestoPopup));
 profileAvatar.addEventListener('click', () => openPopup(editAvatarPopup));
 
-updateAvatarForm.addEventListener('submit', evt =>{
+updateAvatarForm.addEventListener('submit', evt => {
   evt.preventDefault();
-  const data ={};
+  const buttonText = evt.submitter.textContent;
+  loading(true, buttonText, evt);
+  const data = {};
   data.avatar = updateAvatarLink.value;
   updateAvatar(data)
     .then(res => profileAvatar.src = res.avatar)
     .then(closePopup())
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))
+    .finally(() => loading(false, buttonText, evt))
 })
 
 addMestoForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
+  const buttonText = evt.submitter.textContent;
+  loading(true, buttonText, evt);
   const data = {};
   data.name = addMestoTitle.value;
   data.link = addMestoLink.value;
@@ -57,10 +62,19 @@ addMestoForm.addEventListener('submit', (evt) => {
       submitButton.disabled = true;
     })
     .catch(err => console.log(err))
+    .finally(() => loading(false, buttonText, evt))
 });
 
 popupCloseButtons.forEach(item => item.addEventListener('click', closePopup));
 
+export function loading(isLoading, buttonText, evt) {
+  const submitButton = evt.submitter;
+  if (isLoading) {
+    submitButton.textContent = 'Сохранение...'
+  } else {
+    submitButton.textContent = buttonText;
+  }
+}
 
 enableValidation(validationParameters);
 
@@ -76,17 +90,18 @@ getUserInfo()
   })
   .catch(err => console.log(err));
 
-export let cardsList =[];
+export let cardsList = [];
 
 Promise.all([getCards()])
-  .then( res => {
+  .then(res => {
     cardsList = res[0];
     return cardsList;
   }).then(cardsList => {
-    cardsList.forEach(element => {
+  cardsList.forEach(element => {
     addCardItem(element, cardsList);
     return cardsList;
-    })})
+  })
+})
   .catch(err => console.log(err));
 
 

@@ -1,5 +1,6 @@
 import {profileSubtitle, profileTitle, profileTitleInput, profileSubtitleInput} from "./constants";
 import {updateProfile} from "./api";
+import {loading} from "./index";
 
 function handleEsc(evt) {
   if (evt.key === 'Escape') {
@@ -30,6 +31,8 @@ export function closePopup() {
 
 export function submitProfileEdit(evt) {
   evt.preventDefault();
+  const buttonText = evt.submitter.textContent;
+  loading(true, buttonText, evt);
   const profileData = {
     name: profileTitleInput.value,
     about: profileSubtitleInput.value
@@ -39,7 +42,8 @@ export function submitProfileEdit(evt) {
       profileTitle.textContent = profileData.name;
       profileSubtitle.textContent = profileData.about;
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))
+    .finally(loading(false, buttonText, evt))
   closePopup();
 }
 
