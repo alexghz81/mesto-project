@@ -1,19 +1,17 @@
 import {apiConfig} from "./constants";
 
-export const onResponce = (res) => {
+export const checkResponce = (res) => {
   return res.ok ? res.json() : Promise.reject('Ошибка : ' + res);
 }
 
 export function getUserInfo() {
   return fetch(`${apiConfig.url}/users/me`, {headers: apiConfig.headers})
-    .then(onResponce)
-    .catch(err => console.log(err))
+    .then(checkResponce)
 }
 
 export function getCards() {
   return fetch(`${apiConfig.url}cards`, {headers: apiConfig.headers})
-    .then(onResponce)
-    .catch(err => console.log(err));
+    .then(checkResponce)
 }
 
 export function updateProfile(profileData) {
@@ -23,8 +21,7 @@ export function updateProfile(profileData) {
       body: JSON.stringify(profileData)
     }
   )
-    .then(onResponce)
-    .catch(err => console.log(err))
+    .then(checkResponce)
 }
 
 export function updateAvatar(avatarLink) {
@@ -34,8 +31,7 @@ export function updateAvatar(avatarLink) {
       body: JSON.stringify(avatarLink)
     }
   )
-    .then(onResponce)
-    .catch(err => console.log(err))
+    .then(checkResponce)
 }
 
 export function addCard(cardData) {
@@ -44,8 +40,7 @@ export function addCard(cardData) {
     headers: apiConfig.headers,
     body: JSON.stringify(cardData)
   })
-    .then(onResponce)
-    .catch(err => console.log(err))
+    .then(checkResponce)
 }
 
 export function deleteCard(data) {
@@ -53,8 +48,7 @@ export function deleteCard(data) {
     method: 'DELETE',
     headers: apiConfig.headers
   })
-    .then(onResponce)
-    .catch(err => console.log(err))
+    .then(checkResponce)
 }
 
 export function addLike(data) {
@@ -62,8 +56,7 @@ export function addLike(data) {
     method: 'PUT',
     headers: apiConfig.headers
   })
-    .then(onResponce)
-    .catch(err => console.log(err))
+    .then(checkResponce)
 }
 
 export function deleteLike(data) {
@@ -71,6 +64,5 @@ export function deleteLike(data) {
     method: 'DELETE',
     headers: apiConfig.headers
   })
-    .then(onResponce)
-    .catch(err => console.log(err));
+    .then(checkResponce)
 }

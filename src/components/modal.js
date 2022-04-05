@@ -42,8 +42,8 @@ export function submitProfileEdit(evt) {
       profileTitle.textContent = profileData.name;
       profileSubtitle.textContent = profileData.about;
     })
+    .then(() => closePopup())
     .catch(err => console.log(err))
-    .finally(loading(false, buttonText, evt))
-  closePopup();
+    .finally(() => loading(false, buttonText, evt))
 }
 

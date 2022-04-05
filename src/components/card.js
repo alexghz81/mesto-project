@@ -30,7 +30,7 @@ function createCard(data) {
   cardLikes.textContent = data.likes.length;
   cardLikeBtn.addEventListener('click', evt => {
     clickLike(evt, data)
-  });
+  }, {once: true});
   if (data.owner._id !== user.id) {
     cardDeleteBtn.classList.add('element__delete_hidden');
   } else {
@@ -47,30 +47,36 @@ export const addCardItem = (data, cardsList) => {
   card.prepend(cardsElement);
 }
 
-function clickLike(evt, data) {
-  getCards()
-    .then((res) => {
-      return res.find(item => item._id === data._id).likes
-    })
-    .then(likeList => {
-      if (isLiked(data._id, likeList)) {
-        deleteLike(data)
-          .then(res => {
-            evt.target.parentNode.querySelector('.element__like-number').textContent = res.likes.length;
-            evt.target.classList.remove('element__like_active');
-          })
-          .catch(err => console.log(err));
-      } else {
-        addLike(data)
-          .then(res => {
-            evt.target.parentNode.querySelector('.element__like-number').textContent = res.likes.length;
-            evt.target.classList.add('element__like_active');
-          })
-          .catch(err => console.log(err));
-      }
-
-    })
+function clickLike(evt, card) {
+  if (isLiked(card._id, card.likes)) {
+    deleteLike(card)
+      .then(res => {
+        evt.target.parentNode.querySelector('.element__like-number').textContent = res.likes.length;
+        evt.target.classList.remove('element__like_active');
+        return res;
+      })
+      .then(res => {
+        evt.target.addEventListener('click', evt => {
+          clickLike(evt, res)
+        }, {once: true})
+      })
+      .catch(err => console.log(err));
+  } else {
+    addLike(card)
+      .then(res => {
+        evt.target.parentNode.querySelector('.element__like-number').textContent = res.likes.length;
+        evt.target.classList.add('element__like_active');
+        return res;
+      })
+      .then(res => {
+        evt.target.addEventListener('click', evt => {
+          clickLike(evt, res)
+        }, {once: true})
+      })
+      .catch(err => console.log(err));
+  }
 }
+
 
 function deleteElement(evt, data) {
   const item = evt.target.closest('.element');

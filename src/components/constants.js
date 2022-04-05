@@ -7,7 +7,9 @@ export const apiConfig = {
 }
 
 export const user = {
-  id: ''
+  id: '',
+  name: '',
+  about: ''
 }
 
 export const validationParameters = {
@@ -42,4 +44,5 @@ export const profileAvatar = document.querySelector('.profile__image');
 export const editAvatarPopup = document.querySelector('#avatarEdit');
 export const updateAvatarForm = document.forms['avatar-edit-form']
 export const updateAvatarLink = updateAvatarForm.elements.avatar__href;
+export const updateAvatarSubmit = updateAvatarForm.elements.form__submit;
 
