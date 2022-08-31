@@ -23,5 +23,5 @@
 * Использутся асинхронные операции при обращению к серверному API
 * асинхронные операции построены с помощью промисов. 
 
-Ссылка на Pages: [https://alexghz81.github.io/mesto-project/](https://tropnikov.github.io/mesto/)
+Ссылка на Pages: [https://alexghz81.github.io/mesto-project/](https://alexghz81.github.io/mesto-project/)
 
